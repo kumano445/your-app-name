@@ -1,4 +1,11 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {}
+const dotenv = require('dotenv');
 
-module.exports = nextConfig
+// Load environment variables from .env file
+dotenv.config();
+
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  // Rest of your next.config.js configuration
+};
+
+module.exports = nextConfig;
