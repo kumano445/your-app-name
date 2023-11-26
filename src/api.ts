@@ -1,5 +1,7 @@
-// api.ts
-export const addTodo = async (todo: any): Promise<any> => {
+// api.ts の冒頭に追加
+import { Task } from './types'; // types.ts や types.d.ts の実際のパスに置き換える
+
+export const addTodo = async (todo: Task): Promise<Task> => {
   console.log("API_URL:", process.env.API_URL); // API_URL の値をログに出力
   const res = await fetch(`${process.env.API_URL}/tasks`, {
     method: "POST",
