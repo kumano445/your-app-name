@@ -1,13 +1,11 @@
-// api.ts
-import { Task } from "./types"; // 追加
-
-const API_URL = 'https://your-app-name.vercel.app/tasks';
+// Api.ts
+import { Task } from "./types";
 
 export const getAllTodos = async (): Promise<Task[]> => {
-  const res = await fetch(`${API_URL}/tasks`, {
-    cache: 'no-store', // SSR
+  const res = await fetch(`http://localhost:3001/tasks`, {
+    cache: "no-store", // SSR
   });
-  const todos = await res.json();
+  const todos = await res.json(); // awaitを追加
 
   return todos;
 };
