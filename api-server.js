@@ -2,7 +2,9 @@ const express = require('express');
 const cors = require('cors');
 
 const app = express();
-const PORT = process.env.PORT || 3001;
+// APIのベースURL
+const API_URL = 'https://your-app-name.vercel.app';
+
 
 // CORS設定
 app.use(cors());
