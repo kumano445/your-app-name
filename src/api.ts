@@ -1,17 +1,7 @@
-// Api.ts
-import { Task } from "./types";
-
-export const getAllTodos = async (): Promise<Task[]> => {
-  const res = await fetch(`http://localhost:3001/tasks`, {
-    cache: "no-store", // SSR
-  });
-  const todos = await res.json(); // awaitを追加
-
-  return todos;
-};
-
-export const addTodo = async (todo: Task): Promise<Task> => {
-  const res = await fetch(`${API_URL}/tasks`, {
+// api.ts
+export const addTodo = async (todo: any): Promise<any> => {
+  console.log("API_URL:", process.env.API_URL); // API_URL の値をログに出力
+  const res = await fetch(`${process.env.API_URL}/tasks`, {
     method: "POST",
     headers: {
       "Content-type": "application/json",
