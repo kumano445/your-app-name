@@ -3,7 +3,7 @@ const cors = require('cors');
 
 const app = express();
 // APIのベースURL
-const API_URL = 'https://your-app-name.vercel.app';
+const API_URL = 'https://your-app-name.vercel.app/tasks';
 
 
 // CORS設定

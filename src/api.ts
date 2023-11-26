@@ -1,7 +1,7 @@
 // api.ts
 import { Task } from "./types"; // 追加
 
-const API_URL = 'https://your-app-name.vercel.app';
+const API_URL = 'https://your-app-name.vercel.app/tasks';
 
 export const getAllTodos = async (): Promise<Task[]> => {
   const res = await fetch(`${API_URL}/tasks`, {
