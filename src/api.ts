@@ -41,3 +41,9 @@ export const deleteTodo = async (id: string): Promise<Task> => {
 
   return deletedTodo;
 };
+// api.ts の末尾に追加
+export const getAllTodos = async (): Promise<Task[]> => {
+  const res = await fetch(`${API_URL}/tasks`);
+  const todos = await res.json();
+  return todos;
+};
