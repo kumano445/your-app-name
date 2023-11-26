@@ -1,52 +1,48 @@
-import { todo } from "node:test";
 import { Task } from "./types";
-import { text } from "stream/consumers";
 
-export const getAllTodos = async(): Promise<Task[]> => {
-  const res = await fetch(`http://localhost:3001/tasks`,{
-    cache: "no-store",//SSR
+export const getAllTodos = async (): Promise<Task[]> => {
+  const res = await fetch(`http://localhost:3001/tasks`, {
+    cache: "no-store", // SSR
   });
-  const todos = res.json();
+  const todos = await res.json();
 
   return todos;
 };
 
-
-export const addTodo = async(todo: Task): Promise<Task> => {
-  const res = await fetch(`http://localhost:3001/tasks`,{
+export const addTodo = async (todo: Task): Promise<Task> => {
+  const res = await fetch(`http://localhost:3001/tasks`, {
     method: "POST",
-    headers:{
+    headers: {
       "Content-type": "application/json",
     },
     body: JSON.stringify(todo),
   });
-  const newTodo = res.json();
+  const newTodo = await res.json();
 
   return newTodo;
 };
 
-export const editTodo = async(id: string, newText: string): Promise<Task> => {
-  const res = await fetch(`http://localhost:3001/tasks/${id}`,{
+export const editTodo = async (id: string, newText: string): Promise<Task> => {
+  const res = await fetch(`http://localhost:3001/tasks/${id}`, {
     method: "PUT",
-    headers:{
+    headers: {
       "Content-type": "application/json",
     },
-    body: JSON.stringify({text: newText }),
+    body: JSON.stringify({ text: newText }),
   });
-  const updatedTodo = res.json();
+  const updatedTodo = await res.json();
 
   return updatedTodo;
 };
 
-export const deleteTodo = async(id: string): Promise<Task> => {
-  const res = await fetch(`http://localhost:3001/tasks/${id}`,{
+export const deleteTodo = async (id: string): Promise<Task> => {
+  const res = await fetch(`http://localhost:3001/tasks/${id}`, {
     method: "DELETE",
-    headers:{
+    headers: {
       "Content-type": "application/json",
     },
-
   });
-  const deleteTodo = res.json();
+  const deletedTodo = await res.json();
 
-  return deleteTodo;
+  return deletedTodo;
 };
