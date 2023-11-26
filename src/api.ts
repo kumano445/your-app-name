@@ -4,7 +4,7 @@ export const getAllTodos = async (): Promise<Task[]> => {
   const res = await fetch(`http://localhost:3001/tasks`, {
     cache: "no-store", // SSR
   });
-  const todos = await res.json();
+  const todos = await res.json(); // awaitを追加
 
   return todos;
 };
@@ -17,7 +17,7 @@ export const addTodo = async (todo: Task): Promise<Task> => {
     },
     body: JSON.stringify(todo),
   });
-  const newTodo = await res.json();
+  const newTodo = await res.json(); // awaitを追加
 
   return newTodo;
 };
@@ -30,7 +30,7 @@ export const editTodo = async (id: string, newText: string): Promise<Task> => {
     },
     body: JSON.stringify({ text: newText }),
   });
-  const updatedTodo = await res.json();
+  const updatedTodo = await res.json(); // awaitを追加
 
   return updatedTodo;
 };
@@ -42,7 +42,7 @@ export const deleteTodo = async (id: string): Promise<Task> => {
       "Content-type": "application/json",
     },
   });
-  const deletedTodo = await res.json();
+  const deletedTodo = await res.json(); // awaitを追加
 
   return deletedTodo;
 };

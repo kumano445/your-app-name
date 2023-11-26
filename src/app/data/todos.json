@@ -1,10 +1,6 @@
 {
   "tasks": [
     {
-      "text": "Nextjs13",
-      "id": "4"
-    },
-    {
       "id": "65af5c9c-a007-491d-95e0-0cada7200c65",
       "text": "Todoアプリ開発"
     },
@@ -15,6 +11,10 @@
     {
       "text": "なぜなあぜ",
       "id": "284e5ab4-87eb-43b4-911d-3a586103ae5e"
+    },
+    {
+      "id": "d5b699de-d37e-4112-a6af-ddfe4ad1b951",
+      "text": "Nextjs"
     }
   ]
 }
