@@ -1,4 +1,5 @@
 // api.ts
+import { Task } from "./types"; // 追加
 
 const API_URL = 'https://your-app-name.vercel.app';
 
