@@ -1,49 +1,52 @@
-// api.ts の冒頭に追加
-import { Task } from './types'; // types.ts や types.d.ts の実際のパスに置き換える
+import { todo } from "node:test";
+import { Task } from "./types";
+import { text } from "stream/consumers";
 
-const API_URL = process.env.API_URL;
+export const getAllTodos = async(): Promise<Task[]> => {
+  const res = await fetch(`http://localhost:3001/tasks`,{
+    cache: "no-store",//SSR
+  });
+  const todos = res.json();
 
-export const addTodo = async (todo: Task): Promise<Task> => {
-  console.log("API_URL:", API_URL); // API_URL の値をログに出力
-  const res = await fetch(`${API_URL}/tasks`, {
+  return todos;
+};
+
+
+export const addTodo = async(todo: Task): Promise<Task> => {
+  const res = await fetch(`http://localhost:3001/tasks`,{
     method: "POST",
-    headers: {
+    headers:{
       "Content-type": "application/json",
     },
     body: JSON.stringify(todo),
   });
-  const newTodo = await res.json();
+  const newTodo = res.json();
 
   return newTodo;
 };
 
-export const editTodo = async (id: string, newText: string): Promise<Task> => {
-  const res = await fetch(`${API_URL}/tasks/${id}`, {
+export const editTodo = async(id: string, newText: string): Promise<Task> => {
+  const res = await fetch(`http://localhost:3001/tasks/${id}`,{
     method: "PUT",
-    headers: {
+    headers:{
       "Content-type": "application/json",
     },
-    body: JSON.stringify({ text: newText }),
+    body: JSON.stringify({text: newText }),
   });
-  const updatedTodo = await res.json();
+  const updatedTodo = res.json();
 
   return updatedTodo;
 };
 
-export const deleteTodo = async (id: string): Promise<Task> => {
-  const res = await fetch(`${API_URL}/tasks/${id}`, {
+export const deleteTodo = async(id: string): Promise<Task> => {
+  const res = await fetch(`http://localhost:3001/tasks/${id}`,{
     method: "DELETE",
-    headers: {
+    headers:{
       "Content-type": "application/json",
     },
-  });
-  const deletedTodo = await res.json();
 
-  return deletedTodo;
-};
-// api.ts の末尾に追加
-export const getAllTodos = async (): Promise<Task[]> => {
-  const res = await fetch(`${API_URL}/tasks`);
-  const todos = await res.json();
-  return todos;
+  });
+  const deleteTodo = res.json();
+
+  return deleteTodo;
 };
