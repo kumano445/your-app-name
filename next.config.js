@@ -5,6 +5,7 @@ dotenv.config();
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  basePath: process.env.BASE_PATH || '',
   // Rest of your next.config.js configuration
 };
 
